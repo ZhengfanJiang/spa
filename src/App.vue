@@ -1,12 +1,26 @@
 <template>
   <div id="app">
+    <h1>App Header</h1>
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/list">List</router-link>
     </div>
     <router-view/>
+    <loading></loading>
   </div>
 </template>
+
+<script>
+import Loading from './components/Loading'
+
+export default {
+  name: 'app',
+  components: { Loading },
+  comments: {
+    Loading
+  }
+}
+</script>
 
 <style lang="scss">
 #app {
@@ -16,7 +30,6 @@
   text-align: center;
   color: #2c3e50;
 }
-
 #nav {
   padding: 30px;
 
