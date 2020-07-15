@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <router-link to="/list">Go to List page</router-link>
   </div>
 </template>
 

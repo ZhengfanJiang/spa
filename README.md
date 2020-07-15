@@ -28,7 +28,7 @@ npm run lint
 ### Todo
 
 =====
-- [ ] /index
-- [ ] /list
-- [ ] testing
-- [ ] Allow mark
+- [X] /index
+- [X] /list
+- [X] testing
+- [X] Allow mark

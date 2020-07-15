@@ -1,10 +1,6 @@
 <template>
-  <div id="app">
-    <h1>App Header</h1>
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/list">List</router-link>
-    </div>
+  <div id="app" >
+    <h1 @click="backtoHomePage" class="app-header">Jeffery Jiang</h1>
     <router-view/>
     <loading></loading>
   </div>
@@ -15,7 +11,12 @@ import Loading from './components/Loading'
 
 export default {
   name: 'app',
-  components: { Loading }
+  components: { Loading },
+  methods: {
+    backtoHomePage () {
+      this.$router.push('/')
+    }
+  }
 }
 </script>
 
@@ -27,16 +28,14 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+.app-header {
+  &:hover {
+    color:darkgray;
+    cursor: pointer;
   }
 }
+html, body {
+  height: 100%;
+}
+
 </style>

@@ -14,7 +14,7 @@ const actions = {
     context.commit(types.SET_LIST_DATA, payload)
   },
   async addData (context, count) {
-    const payload = await getPostData(count)
+    const payload = await getPostData(count, true)
     context.commit(types.ADD_DATA, payload)
   }
 }
@@ -25,6 +25,10 @@ const mutations = {
   },
   [types.ADD_DATA] (state, payload) {
     state.dataArr = state.dataArr.concat(payload)
+  },
+  [types.MARK_DATA] (state, { item, index }) {
+    state.dataArr.splice(index, 1)
+    state.dataArr.unshift(item)
   }
 }
 
