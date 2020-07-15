@@ -1,7 +1,8 @@
 import keyMirror from 'keymirror'
 
 const types = keyMirror({
-  SET_LIST_DATA: null
+  SET_LIST_DATA: null,
+  ADD_DATA: null
 })
 
 export default types

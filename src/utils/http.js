@@ -2,7 +2,8 @@ import axios from 'axios'
 import eventBus from './eventBus'
 
 const appJson = 'application/json'
-const defualt = {
+const defaults = {
+  baseURL: 'https://jsonplaceholder.typicode.com/',
   headers: {
     'Content-type': appJson,
     Accept: appJson
@@ -12,13 +13,14 @@ const defualt = {
 
 // allow user define
 export function createAxios (options) {
-  const settings = Object.assign({}, defualt, options)
-  const http = axios.create(settings)
+  const settings = Object.assign({}, defaults, options)
+  const instance = axios.create(settings)
   return {
-    async get (...args) {
+    get: async (...args) => {
       try {
         eventBus.emit('module_loading_startLoading')
-        return await http.get(...args)
+        const response = await instance.get(...args)
+        return response
         // eslint-disable-next-line no-useless-catch
       } catch (e) {
         throw e
@@ -26,14 +28,15 @@ export function createAxios (options) {
         eventBus.emit('module_loading_stopLoading')
       }
     },
-    async silentGet (...args) {
+    silentGet: async (...args) => {
       // eslint-disable-next-line no-useless-catch
       try {
-        return await http.get(...args)
+        return await instance.get(...args)
       } catch (e) {
         throw e
       }
     }
+    // Todo: add other REST actions
   }
 }
 

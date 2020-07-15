@@ -15,10 +15,7 @@ import Loading from './components/Loading'
 
 export default {
   name: 'app',
-  components: { Loading },
-  comments: {
-    Loading
-  }
+  components: { Loading }
 }
 </script>
 
